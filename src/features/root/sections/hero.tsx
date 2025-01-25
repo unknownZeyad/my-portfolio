@@ -3,16 +3,19 @@
 import FadedText from '@/core/components/ui/FadedText'
 import InViewSection from '@/core/components/ui/InViewSection'
 import React from 'react'
+import { useNavigationLinksProvider } from '../providers/navigation-links-provider'
 
 function Hero() {
 
+  const { activateLinkState } = useNavigationLinksProvider()
+  
   function onHitView () {
-    console.log("wow , enterd hero section")
+    activateLinkState("hero")
   }
 
   return (
-    <InViewSection onHitView={onHitView}>
-      <section className='h-screen pt-[80px]'>
+    <InViewSection id='hero' onHitView={onHitView}>
+      <section className='h-screen pt-[124px]'>
         <div className="container flex items-center h-full">
           <div>
             <FadedText 

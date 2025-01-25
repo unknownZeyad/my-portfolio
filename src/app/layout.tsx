@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import "../globals.css";
 import { TChildren } from "@/core/types";
-import Header from "@/core/components/layout/header";
-import Footer from "@/core/components/layout/footer";
-
+import Providers from "@/core/providers";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,9 +17,9 @@ export default function RootLayout({ children }: TChildren) {
         <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet"/>
       </head>
       <body>
-        <Header/>
-        {children}
-        <Footer/>
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   );

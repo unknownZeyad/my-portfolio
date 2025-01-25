@@ -6,6 +6,9 @@
 :root {
   background-color: #000;
   color: #fff;
+  ::-webkit-scrollbar {
+    width: 0;
+  }
 
   --inter-font: "Inter";
   --dreadnoughtus-font: "Dreadnoughtus";
@@ -26,7 +29,6 @@
   .hero_title {
     @apply font-primary font-extrabold text-7xl uppercase
   }
-
 
   .container {
     @apply max-w-7xl w-[90%]
