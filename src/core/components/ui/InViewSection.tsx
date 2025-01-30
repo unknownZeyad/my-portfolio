@@ -12,7 +12,7 @@ function InViewSection({ onHitView, children, ...props }: TInViewSectionProps) {
   const sectionRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(sectionRef,{
     margin: "0px",
-    amount: .8,
+    amount: .7,
   })
   
   useEffect(() => {
@@ -20,9 +20,9 @@ function InViewSection({ onHitView, children, ...props }: TInViewSectionProps) {
   },[isInView])
 
   return (
-    <div ref={sectionRef} {...props}>
+    <section ref={sectionRef} {...props}>
       { children }
-    </div>
+    </section>
   )
 }
 

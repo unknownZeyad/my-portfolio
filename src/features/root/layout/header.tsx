@@ -2,8 +2,8 @@
 
 import Link from 'next/link'
 import React from 'react'
-import { useNavigationLinksProvider } from '../_providers/navigation-links-provider'
 import ScrollToWrapper from '@/core/components/ui/ScrollToWrapper'
+import { useNavigationLinksProvider } from '../providers/navigation-links-provider'
 
 function Header() {
 
