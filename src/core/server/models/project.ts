@@ -20,6 +20,7 @@ const projectSchema = new Schema<IProjectDocument>({
     type: String,
     default: uuidv4,
     unique: true,
+    immutable: true
   },
   name: {
     type: String,

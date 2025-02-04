@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import React from 'react'
-import ScrollToWrapper from '@/core/components/ui/ScrollToWrapper'
+import ScrollToWrapper from '@/core/client/components/ui/ScrollToWrapper'
 import { useNavigationLinksProvider } from '../providers/navigation-links-provider'
 
 function Header() {

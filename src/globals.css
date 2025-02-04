@@ -11,7 +11,7 @@
   }
 
   --inter-font: "Inter";
-  --dreadnoughtus-font: "Dreadnoughtus";
+  --monument-extended-font: "Monument Extended";
 }
 
 @font-face {
@@ -20,14 +20,14 @@
 }
 
 @font-face {
-  font-family: Dreadnoughtus;
-  src: url("/fonts/dreadnoughtus.ttf");
+  font-family: Monument Extended;
+  src: url("/fonts/monument-extended-r.otf");
 }
 
 @layer utilities {
 
   .hero_title {
-    @apply font-primary font-extrabold text-7xl uppercase
+    @apply font-primary font-extrabold text-[5rem] uppercase leading-[75px]
   }
 
   .container {

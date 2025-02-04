@@ -12,7 +12,7 @@ export default {
     extend: {
       fontFamily: {
         secondary: "var(--inter-font)",
-        primary: "var(--dreadnoughtus-font)"
+        primary: "var(--monument-extended-font)"
       },
       container: {
         center: true,

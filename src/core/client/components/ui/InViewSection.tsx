@@ -5,14 +5,15 @@ import { ComponentProps, useEffect, useRef } from "react"
 
 type TInViewSectionProps = {
   onHitView: () => void,
+  amount?: number
 } & ComponentProps<"div">
 
-function InViewSection({ onHitView, children, ...props }: TInViewSectionProps) {
+function InViewSection({ onHitView, children, amount, ...props }: TInViewSectionProps) {
 
   const sectionRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(sectionRef,{
     margin: "0px",
-    amount: .7,
+    amount: amount || .7,
   })
   
   useEffect(() => {

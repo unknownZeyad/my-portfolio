@@ -1,6 +1,7 @@
 "use client"
 
-import React, { createContext, Dispatch, ReactNode, useContext, useState } from 'react'
+import { TChildren } from '@/core/types'
+import React, { createContext, Dispatch, useContext, useState } from 'react'
 
 const ProjectInfoContext = createContext<{
   inViewProjectId: string | null,
@@ -16,9 +17,7 @@ export function useProjectInfoProvider () {
   return useContext(ProjectInfoContext)
 }
 
-function ProjectInfoProvider({ children }: {
-  children: ReactNode
-}) {
+function ProjectInfoProvider({ children }: TChildren) {
 
   const [inViewProjectId, setInViewProjectId] = useState<string|null>(null)
 
