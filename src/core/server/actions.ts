@@ -7,6 +7,34 @@ import { cookies } from "next/headers";
 import { validateUserByToken } from "./middlewares/validateUserByToken";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
+import { AdminModel, IAdminDocument } from "./models/admin";
+import { compare } from "bcrypt"
+import { createAuthToken } from "./lib/utils/auth"
+import { redirect } from "next/navigation";
+
+export async function loginAction(formData:FormData) {
+
+  const password = formData.get("password") as string
+  const email = formData.get("email") as string
+
+  await connectDB()
+
+  const admin: (IAdminDocument|null) = await AdminModel.findOne({ email })
+
+  if (admin) {
+    const isValidPassword = await compare(password, admin.password)
+    if (isValidPassword) {
+      const accessToken = createAuthToken({
+        access_key: admin.access_key,
+        user_id: admin.uuid
+      });
+    
+      (await cookies()).set("access_token", accessToken, { httpOnly: true, sameSite: "lax", secure: true });
+    
+      redirect("/panel")
+    }
+  }
+}
 
 export async function getProjectsAction(queryObj: Partial<IProject>,page: number, limit: number) {
   await connectDB();

@@ -20,7 +20,6 @@ const adminSchema = new Schema<IAdminDocument>({
   },
   name: {
     type: String,
-    default: uuidv4,
   },
   access_key: {
     type: String,
@@ -31,6 +30,7 @@ const adminSchema = new Schema<IAdminDocument>({
   email: {
     type: String,
     required: true,
+    unique: true
   },
   password: {
     type: String,
