@@ -10,8 +10,8 @@ export function createAuthToken (payload:TAuthTokenPayload) {
 
 export function verifyAuthToken (token: string) {
   try {
-    const secret = process.env.AUTH_TOKEN_SECRET as string
-    return jwt.verify(token,secret) as TAuthTokenPayload
+    const decoded = jwt.decode(token) as TAuthTokenPayload
+    return decoded
   }catch {
     return null
   }

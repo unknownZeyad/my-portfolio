@@ -14,3 +14,14 @@ export const createProjectSchema = z.object({
   deployment_url: z.string().regex(urlRegex,"deployment url is not valid").optional(),
   github_repo_url: z.string().regex(urlRegex,"github repository url is not valid").optional(),
 })
+
+export const createExperienceSchema = z.object({
+  from: z.string(),
+  to: z.string(),
+  worked_at: z.object({
+    name: z.string(),
+    website_url: z.string().regex(urlRegex,"github repository url is not valid").optional()
+  }),
+  position: z.string(),
+  achievements: z.array(z.string())
+})

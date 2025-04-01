@@ -2,31 +2,39 @@
 
 import gsap from "gsap"
 import { ScrollToPlugin } from "gsap/ScrollToPlugin"
-import { ComponentProps } from "react"
+import { cloneElement, ComponentProps, JSXElementConstructor, MouseEvent, ReactElement, useCallback } from "react"
+
 gsap.registerPlugin(ScrollToPlugin)
 
-type TScrollToWrapperProps = {
+type TChild = keyof JSX.IntrinsicElements | JSXElementConstructor<any>
+
+type TScrollToWrapperProps<T extends TChild> = {
   target: string,
-  duration?: number
-} & ComponentProps<"div">
+  duration?: number,
+  children: ReactElement<ComponentProps<TChild>,TChild>,
+} & ComponentProps<T>
 
-function ScrollToWrapper({ children, target, duration, ...props }: TScrollToWrapperProps) {
-
-  function handleClick () {
+function ScrollToWrapper<Element extends TChild>(
+  { children, target, duration, ...props }: 
+  TScrollToWrapperProps<Element>
+) {
+  
+  const handleScroll = useCallback(() => {
     gsap.to(window, { 
       duration: duration || 1, 
       scrollTo: target,
       ease: "power4.out"
     });
-  }
+  },[duration, target])
 
   return (
-    <div 
-      {...props}
-      onClick={handleClick}
-    >
-      { children }
-    </div>
+    cloneElement(children, {
+      ...props,
+      onClick: (e: MouseEvent<Element>) => {
+        if(props?.onClick) props?.onClick(e)
+        handleScroll()
+      }
+    })
   )
 }
 

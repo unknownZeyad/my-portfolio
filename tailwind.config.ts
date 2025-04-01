@@ -14,7 +14,7 @@ export default {
   	extend: {
   		fontFamily: {
   			secondary: 'var(--inter-font)',
-  			primary: 'var(--monument-extended-font)'
+  			primary: 'var(--ps-times-font)'
   		},
   		container: {
   			center: true

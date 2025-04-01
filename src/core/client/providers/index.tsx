@@ -2,7 +2,7 @@
 
 import React from 'react'
 import LenisProvider from './lenis-provider'
-import { TChildren } from '../types'
+import { TChildren } from '../../types'
 
 function Providers({ children }: TChildren) {
   return (

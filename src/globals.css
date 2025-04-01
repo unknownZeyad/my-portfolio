@@ -8,8 +8,8 @@
 }
 
 @font-face {
-  font-family: Monument Extended;
-  src: url("/fonts/monument-extended-r.otf");
+  font-family: Ps Times;
+  src: url("/fonts/ps-times.ttf");
 }
 
 @layer base {
@@ -41,24 +41,31 @@
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
 
-    background: #000;
-    color: #fff;
+    --dark-theme-bg-color: #141414;
+    --dark-theme-text-color: #fff;
+
+    --light-theme-bg-color: #fff;
+    --light-theme-text-color: #000;
+
+    background-color: var(--light-theme-bg-color);
+    color: var(--dark-light-text-color);
+    
     &::-webkit-scrollbar {
       width: 0;
     }
   
     --inter-font: "Inter";
-    --monument-extended-font: "Monument Extended";
+    --ps-times-font: "Ps Times";
   }
 }
 
 
 @layer utilities {
   .hero_title {
-    @apply font-primary font-extrabold text-[5rem] uppercase leading-[75px]
+    @apply font-primary uppercase text-[8.5rem] !leading-[8rem]
   }
 
   .container {
-    @apply max-w-7xl w-[90%]
+    @apply max-w-7xl w-[80%]
   }
 }

@@ -1,36 +1,59 @@
-"use client"
-
 import Link from 'next/link'
 import React from 'react'
 import ScrollToWrapper from '@/core/client/components/ui/ScrollToWrapper'
-import { useNavigationLinksProvider } from '../providers/navigation-links-provider'
+
+type TLink = {
+  name: string,
+  to: string
+}
+
+const links: TLink[] = [
+  {
+    name: "Index",
+    to: "index"
+  },
+  {
+    name: "About",
+    to: "about"
+  },
+  {
+    name: "Work",
+    to: "work"
+  },
+  {
+    name: "Experience",
+    to: "experience"
+  },
+  {
+    name: "Contact",
+    to: "contact"
+  },
+]
 
 function Header() {
-
-  const { links } = useNavigationLinksProvider()
-
   return (
-    <header className='fixed top-0 left-0 w-full backdrop-blur-md z-50'>
-      <div className="flex container items-top pt-10 pb-4 justify-between">
+    <header className='fixed top-0 left-0 w-full z-50'>
+      <div className="flex container items-top py-8 justify-between">
         
-        <h1 className='font-primary text-2xl font-bold h-fit'>
+        <h1 className='font-secondary text-3xl font-extrabold h-fit'>
           <Link href="/">Zeyad.</Link>
         </h1>
 
-        <nav className='flex flex-col -space-y-1'>
+        <ul className='flex gap-8 items-center'>
           {
             links.map(curr => (
               <ScrollToWrapper 
                 key={curr.to}
-                className={`font-primary cursor-pointer text-sm uppercase duration-100 ${curr.active ? "text-white" : "text-white/50"}`}
+                className='header_link font-secondary font-semibold cursor-pointer capitalize duration-100'
                 target={`#${curr.to}`}
                 duration={1}
               >
-                {curr.name}
+                <li>{curr.name}</li>
               </ScrollToWrapper>
             ))
           }
-        </nav>
+        </ul>
+
       </div>
     </header>
   )
