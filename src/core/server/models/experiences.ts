@@ -32,7 +32,7 @@ const experienceSchema = new Schema<IExperienceDocument>({
     type: String,
     required: true,
   },
-  worked_at: [{
+  worked_at: {
     name: {
       type: String,
       required: true
@@ -40,7 +40,7 @@ const experienceSchema = new Schema<IExperienceDocument>({
     website_url: {
       type: String,
     }
-  }],
+  },
   position: String,
   achievements: [String]
 })
