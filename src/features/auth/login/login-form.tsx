@@ -1,7 +1,7 @@
 import { Button } from '@/core/client/components/ui/button'
 import { Input } from '@/core/client/components/ui/input'
 import { Label } from '@/core/client/components/ui/label'
-import { loginAction } from '@/core/server/actions'
+import { loginAction } from '@/core/server/actions/auth'
 
 function LoginForm() {
   return (
