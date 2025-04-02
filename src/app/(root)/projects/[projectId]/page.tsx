@@ -1,4 +1,4 @@
-import { getProjectAction } from '@/core/server/actions'
+import { getProjectAction } from '@/core/server/actions/projects'
 import { redirect } from 'next/navigation'
 
 async function ProjectPage({ params }: {
