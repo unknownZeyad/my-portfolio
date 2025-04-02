@@ -3,7 +3,7 @@
 import { TUnknownChildren } from "@/core/types"
 import gsap from "gsap"
 import { ScrollToPlugin } from "gsap/ScrollToPlugin"
-import { cloneElement, ComponentProps, MouseEvent, ReactElement, useCallback } from "react"
+import { cloneElement, ComponentProps, ReactElement, useCallback } from "react"
 
 gsap.registerPlugin(ScrollToPlugin)
 
