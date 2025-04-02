@@ -1,3 +1,5 @@
+"use client"
+
 import { TUnknownChildren } from '@/core/types'
 import { useGSAP } from '@gsap/react'
 import { cloneElement, ComponentProps, ReactElement, useRef } from 'react'
