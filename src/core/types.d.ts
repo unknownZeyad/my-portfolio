@@ -10,3 +10,5 @@ declare type TAuthTokenPayload = {
 }
 
 type TMonth = 'Jan' | 'Feb' | 'Mar' | 'Apr' | 'May' | 'Jun' | 'Jul' | 'Aug' | 'Sep' | 'Oct' | 'Nov' | 'Dec';
+
+type TUnknownChildren = keyof JSX.IntrinsicElements | JSXElementConstructor<any>

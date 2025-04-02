@@ -1,23 +1,20 @@
 "use client"
 
+import { TUnknownChildren } from "@/core/types"
 import gsap from "gsap"
 import { ScrollToPlugin } from "gsap/ScrollToPlugin"
-import { cloneElement, ComponentProps, JSXElementConstructor, MouseEvent, ReactElement, useCallback } from "react"
+import { cloneElement, ComponentProps, MouseEvent, ReactElement, useCallback } from "react"
 
 gsap.registerPlugin(ScrollToPlugin)
 
-type TChild = keyof JSX.IntrinsicElements | JSXElementConstructor<any>
 
-type TScrollToWrapperProps<T extends TChild> = {
+type TScrollToWrapperProps = {
   target: string,
   duration?: number,
-  children: ReactElement<ComponentProps<TChild>,TChild>,
-} & ComponentProps<T>
+  children: ReactElement<ComponentProps<TUnknownChildren>,TUnknownChildren>,
+} 
 
-function ScrollToWrapper<Element extends TChild>(
-  { children, target, duration, ...props }: 
-  TScrollToWrapperProps<Element>
-) {
+function ScrollToWrapper({ children, target, duration }: TScrollToWrapperProps) {
   
   const handleScroll = useCallback(() => {
     gsap.to(window, { 
@@ -29,11 +26,10 @@ function ScrollToWrapper<Element extends TChild>(
 
   return (
     cloneElement(children, {
-      ...props,
-      onClick: (e: MouseEvent<Element>) => {
-        if(props?.onClick) props?.onClick(e)
+      onClick: () => {
+        children.props?.onClick && children.props.onClick()
         handleScroll()
-      }
+      } 
     })
   )
 }

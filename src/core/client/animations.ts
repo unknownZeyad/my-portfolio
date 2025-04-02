@@ -1,17 +1,57 @@
 import gsap from "gsap";
+import { TUnknownChildren } from "../types";
+
+type TTween = {
+  from: gsap.TweenVars,
+  to: ((element: TUnknownChildren) => gsap.TweenVars) | gsap.TweenVars,
+}
 
 export const animateThemeOnScroll = () => {
-  gsap.timeline().fromTo(document.body,{
-    scrollTrigger: {
-      scrub: 3,
-      trigger: "#experiences",
-      // start: "top 30%",  
-    },
-    duration: 1,
-    backgroundColor: "var(--light-theme-bg-color)",
-    color: "var(--light-theme-text-color)",
+  gsap.fromTo(document.body,{
+    backgroundColor: "#fff",
+    color: "#000",
   },{
-    backgroundColor: "var(--dark-theme-bg-color)",
-    color: "var(--dark-theme-text-color)",
+    backgroundColor: "#141414",
+    color: "#fff",
+    scrollTrigger: {
+      scrub: 1,
+      trigger: "#experiences",
+      start: "300px bottom",  
+      end: "500px bottom",
+    },
+  })
+}
+
+export const animateHeaderOnScroll = () => {
+  gsap.fromTo('header',{
+    "--backdrop-blur": "0px",
+  },{
+    "--backdrop-blur": "20px",
+    scrollTrigger: {
+      scrub: 1,
+      start: "0 top",  
+      end: "150px top",
+    },
+  })
+}
+
+
+
+export const skewBlurTween: TTween = {
+  from: {
+    transform: "skewX(-40deg)",
+    filter: "blur(20px)",
+    opacity: ".5"
+  },
+  to: (element) => ({
+    transform: "skewX(0deg)",
+    filter: "blur(0px)",
+    opacity: "1",
+    duration: 1,
+    scrollTrigger: {
+      start: "top bottom",
+      end: "100px bottom",
+      trigger: element
+    }
   })
 }

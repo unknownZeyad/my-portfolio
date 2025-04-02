@@ -22,7 +22,7 @@ const links: TLink[] = [
   },
   {
     name: "Experience",
-    to: "experience"
+    to: "experiences"
   },
   {
     name: "Contact",
@@ -32,7 +32,7 @@ const links: TLink[] = [
 
 function Header() {
   return (
-    <header className='fixed top-0 left-0 w-full z-50'>
+    <header className='fixed backdrop-blur-[var(--backdrop-blur)] top-0 left-0 w-full z-50 '>
       <div className="flex container items-top py-8 justify-between">
         
         <h1 className='font-secondary text-3xl font-extrabold h-fit'>
@@ -44,11 +44,10 @@ function Header() {
             links.map(curr => (
               <ScrollToWrapper 
                 key={curr.to}
-                className='header_link font-secondary font-semibold cursor-pointer capitalize duration-100'
                 target={`#${curr.to}`}
                 duration={1}
               >
-                <li>{curr.name}</li>
+                <li className='header_link font-secondary font-semibold cursor-pointer capitalize duration-100'>{curr.name}</li>
               </ScrollToWrapper>
             ))
           }

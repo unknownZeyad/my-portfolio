@@ -8,24 +8,11 @@ import { createExperienceSchema } from "../schemas";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
 
-const LIMIT = 5
-
-export async function getExperiencesPagesAction() {
-  await connectDB();
-  const totalCount = await ExperienceModel.countDocuments();
-
-  return Math.ceil(totalCount / LIMIT)
-}
-
-
-export async function getExperiencesAction(page: number) {
+export async function getExperiencesAction() {
   await connectDB();
   
   const experiences = await ExperienceModel.find() 
     .select("-_id")
-    .sort({ listing_priority: -1 }) 
-    .skip((page - 1) * LIMIT)
-    .limit(LIMIT)
     .lean<IExperience[]>(); 
     
   return experiences

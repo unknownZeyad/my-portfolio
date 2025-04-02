@@ -13,7 +13,7 @@ const bioSectionsText: string[] = [
 
 function About() {
   return (
-    <section className='container h-screen flex flex-col justify-center'>
+    <section id='about' className='container h-screen flex flex-col justify-center'>
       <div className='font-primary mb-12 mt-20 uppercase text-[6rem] leading-[5rem]'>
         <h2>Passionate</h2>
         <h2>& Creative</h2>

@@ -8,7 +8,7 @@ export const dynamic = "force-static"
 function Hero() {
 
   return (
-    <section className='h-screen container !w-[90%] pt-[120px]'>
+    <section id="index" className='h-screen container !w-[90%] pt-[120px]'>
       <img 
         className='absolute block top-0 right-0 w-[655px] aspect-[1.45]' 
         src="/images/horus-eye.png" 
