@@ -1,4 +1,4 @@
-import { ReactNode } from "react"
+import { ReactElement, ReactNode } from "react"
 
 declare type TChildren = {
   readonly children: ReactNode

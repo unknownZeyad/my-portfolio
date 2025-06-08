@@ -39,7 +39,7 @@ export const animateHeaderOnScroll = () => {
 
 export const skewBlurTween: TTween = {
   from: {
-    transform: "skewX(-40deg)",
+    transform: "skewX(-50deg)",
     filter: "blur(20px)",
     opacity: ".5"
   },
@@ -47,7 +47,7 @@ export const skewBlurTween: TTween = {
     transform: "skewX(0deg)",
     filter: "blur(0px)",
     opacity: "1",
-    duration: 1,
+    duration: 1.5,
     scrollTrigger: {
       start: "top bottom",
       end: "100px bottom",
@@ -55,3 +55,20 @@ export const skewBlurTween: TTween = {
     }
   })
 }
+
+
+export const fadeIn: TTween = {
+  from: {
+    opacity: 0
+  },
+  to: (element) => ({
+    opacity: 1,
+    duration: 2,
+    scrollTrigger: {
+      start: "top bottom",
+      end: "100px bottom",
+      trigger: element
+    }
+  })
+}
+

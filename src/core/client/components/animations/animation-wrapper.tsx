@@ -2,6 +2,7 @@
 
 import { TUnknownChildren } from '@/core/types'
 import { useGSAP } from '@gsap/react'
+import gsap from 'gsap'
 import { cloneElement, ComponentProps, ReactElement, useRef } from 'react'
 
 type AnimationWrapperProps = {
@@ -13,11 +14,11 @@ type AnimationWrapperProps = {
 }
 function AnimationWrapper({ children, fromTo: { from, to } }: AnimationWrapperProps) {
   const ref = useRef<TUnknownChildren>(null)
-  const realTo = typeof to === "function" ? to(ref.current) : to
 
   useGSAP(() => {
+    const realTo = typeof to === "function" ? to(ref.current) : to
     gsap.fromTo(ref.current,from,realTo)
-  },[ref])
+  },[])
   
   return cloneElement<TUnknownChildren>(children, { ref })
 }

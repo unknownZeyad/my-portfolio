@@ -13,13 +13,15 @@ const bioSectionsText: string[] = [
 
 function About() {
   return (
-    <section id='about' className='container h-screen flex flex-col justify-center'>
-      <div className='font-primary mb-12 mt-20 uppercase text-[6rem] leading-[5rem]'>
+    <section id='about' className='container h-screen flex flex-col mt-20 justify-center'>
+      <h2 className="font-secondary font-medium mb-[100px]">About</h2>
+
+      <div className='font-primary mb-12 uppercase text-[6rem] leading-[5rem]'>
         <h2>Passionate</h2>
         <h2>& Creative</h2>
       </div>
 
-      <div className='font-secondary text-2xl font-medium capitalize space-y-8 w-[75%]'>
+      <div className='font-secondary text-xl font-medium capitalize space-y-8 w-[75%]'>
         {
           bioSectionsText.map((curr,idx) => (
             <p key={idx}>{curr}</p>
@@ -28,7 +30,7 @@ function About() {
       </div>
 
       <div className="flex justify-end mt-12">
-        <button className='bg-black px-16 text-2xl py-3 text-white font-primary'>Download Resume</button>
+        <button className='bg-smokey-white px-12 font-medium duration-100 hover:bg-opacity-70 text-xl py-3 text-black font-secondary'>Download Resume</button>
       </div>
     </section>
   )

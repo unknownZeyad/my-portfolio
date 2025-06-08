@@ -1,26 +1,16 @@
-import { skewBlurTween } from "@/core/client/animations"
-import AnimationWrapper from "@/core/client/components/ui/animation-wrapper"
+import { FadeIn, SkewAndBlur } from "@/core/client/components/animations/wrappers"
 import { cn } from "@/core/client/lib/utils"
 import { getExperiencesAction } from "@/core/server/actions/experiences"
 import { IExperience } from "@/core/server/models/experiences"
-import { TUnknownChildren } from "@/core/types"
-
-export const dynamic = "force-dynamic"
-
-function Animation ({ children }: TUnknownChildren) {
-  return (
-    <AnimationWrapper fromTo={skewBlurTween}>
-      { children }
-    </AnimationWrapper>
-  )
-}
 
 async function Experiences() {
   const experiences = await getExperiencesAction()
 
   return (
     <main id="experiences" className="container mt-[200px]">
-      <h2 className="text-7xl uppercase font-primary mb-[100px]">Experiences</h2>
+      <SkewAndBlur>
+        <h2 className="font-secondary font-medium mb-[100px]">Experience</h2>
+      </SkewAndBlur>
       <div className="flex flex-col gap-[200px]">
         {
           experiences.map((curr,idx) => (
@@ -45,32 +35,38 @@ export function ExperienceCard ({ achievements, from, position, to, worked_at, d
   return (
     <section 
       className={cn(
-        "max-w-[75%] xl:max-w-[70%] w-fit after:absolute relative after:w-[1px] pl-8 after:h-[110%] after:bg-white after:top-0 after:left-0 gap-5 flex flex-col",
-        directionIndex % 2 === 1 && "ml-auto"
+        "gap-5 flex flex-col relative pl-8",
+        // 'max-w-[75%] xl:max-w-[70%] w-fit',
+        // directionIndex % 2 === 1 && "ml-auto",
       )}
     >
+      <FadeIn>
+        <span className="vr absolute h-[110%] top-0 left-0"/>
+      </FadeIn>
+
       <div className="flex justify-between font-secondary items-center">
-        <Animation>
-          <h5 className="text-4xl font-bold">{worked_at.name}</h5>
-        </Animation>
-        <Animation>
+        <SkewAndBlur>
+          <h5 className="text-3xl font-bold">{worked_at.name}</h5>
+        </SkewAndBlur>
+
+        <SkewAndBlur>
           <div className="flex text-lg font-semibold">
             <p>{from}</p>
             <p className="mx-2">-</p>
             <p>{to}</p>
           </div>
-        </Animation>
+        </SkewAndBlur>
       </div>
 
-      <Animation>
-        <h3 className="text-7xl font-primary uppercase">{position}</h3>
-      </Animation>
+      <SkewAndBlur>
+        <h3 className="text-8xl font-primary uppercase skew_and_blur">{position}</h3>
+      </SkewAndBlur>
 
-      <div className="flex flex-col font-secondary text-lg font-medium gap-3">
+      <div className="flex flex-col font-secondary font-medium gap-3">
         {achievements.map((curr,idx) => (
-          <Animation key={idx}>
+          <SkewAndBlur key={idx}>
             <p>{curr}</p>
-          </Animation>
+          </SkewAndBlur>
         ))}
       </div>
     </section>

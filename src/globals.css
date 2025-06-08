@@ -8,8 +8,8 @@
 }
 
 @font-face {
-  font-family: Ps Times;
-  src: url("/fonts/ps-times.ttf");
+  font-family: Canopee;
+  src: url("/fonts/canopee.otf");
 }
 
 @layer base {
@@ -41,31 +41,32 @@
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
 
-    --dark-theme-bg-color: #141414;
-    --dark-theme-text-color: #fff;
-
-    --light-theme-bg-color: #fff;
-    --light-theme-text-color: #000;
-
-    background-color: var(--light-theme-bg-color);
-    color: var(--dark-light-text-color);
+    background-color: #000;
+    color: #9B9B9B;
     
-    &::-webkit-scrollbar {
+    /* &::-webkit-scrollbar {
       width: 0;
-    }
+    } */
   
     --inter-font: "Inter";
-    --ps-times-font: "Ps Times";
+    --canopee: "Canopee";
   }
 }
 
-
 @layer utilities {
   .hero_title {
-    @apply font-primary uppercase text-[8.5rem] !leading-[8rem]
+    @apply font-primary uppercase text-[50px] !leading-[3rem] xs:text-[60px] xs:!leading-[4rem] sm:text-[70px] sm:!leading-[5rem] md:text-[80px] md:!leading-[5.5rem] lg:text-[110px] lg:!leading-[7rem]
   }
 
   .container {
     @apply max-w-7xl w-[80%]
+  }
+
+  .hr {
+    @apply h-[1px] bg-smokey-white block
+  }
+
+  .vr {
+    @apply h-full bg-smokey-white block w-[1px]
   }
 }

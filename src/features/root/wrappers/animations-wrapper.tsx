@@ -11,7 +11,7 @@ gsap.registerPlugin(ScrollTrigger)
 function AnimationsWrapper({ children }: TChildren) {
 
   useGSAP(() => {
-    animateThemeOnScroll()
+    // animateThemeOnScroll()
     animateHeaderOnScroll()
   },[])
 

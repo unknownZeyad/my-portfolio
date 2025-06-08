@@ -45,9 +45,9 @@ function Header() {
               <ScrollToWrapper 
                 key={curr.to}
                 target={`#${curr.to}`}
-                duration={1}
+                duration={2}
               >
-                <li className='header_link font-secondary font-semibold cursor-pointer capitalize duration-100'>{curr.name}</li>
+                <li className='header_link hover:opacity-75 font-secondary font-semibold cursor-pointer capitalize duration-100'>{curr.name}</li>
               </ScrollToWrapper>
             ))
           }
